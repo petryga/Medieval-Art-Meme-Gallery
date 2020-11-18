@@ -27,7 +27,10 @@ img {
 }
 
 .wrapper {
-    max-width: 1280px;
-    width: 100%;
-    margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
+

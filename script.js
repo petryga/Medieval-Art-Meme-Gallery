@@ -28,6 +28,7 @@ $.when(myApp.getImages, myApp.getJokes)
         // console.log(url, joke[0].joke);
         jokesArray.push(joke[0].joke);
         imagesArray.push(image.url);
+        $('.invisible').remove();
         appendContent(url);
     })
     .fail(function (imageError, jokeError) {
@@ -43,16 +44,20 @@ const jokesArray = [];
 
 // ---- I turned your event listener into a function, and I call the function above in $.when (line 31)
 const appendContent = function(imageLink) {
+  //  ------ changed the append variable name, and now appending a div containing the image and the joke to the page on click.
+  // Moved all this code outside the event listener, but inside the function so that there is a image/joke pair that comes up when the page loads
+  let pairToAppend = `
+  <div class = "imageJokeBox">
+    <p>${jokesArray}</p>
+  </div>
+  `;
+  $('.appendToHere').append(pairToAppend);
+  // ----- took the returned image and set it as the background image of div.image-container (had to set height and width for .image-container in _main.scss)
+  $('.imageJokeBox').css('background-image', `url(${imageLink})`)
+
+
   $('#btn').on('click', function () {
 
-    let pairToAppend = `
-    <div class = "imageJokeBox">
-      <p>${jokesArray}</p>
-    </div>
-    `;
-    $('.appendToHere').append(pairToAppend);
-    // ----- took the returned image and set it as the background image of div.image-container (had to set height and width for .image-container in _main.scss)
-    $('.imageJokeBox').css('background-image', `url(${imageLink})`)
   })
 }
 
