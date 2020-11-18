@@ -7,6 +7,9 @@ myApp.getImages = $.ajax({
     url: myApp.imagesUrl,
     method: 'GET',
     dataType: 'json'
+}).fail(function (imageError) {
+  alert(`Joke content failed: ${imageError.statusText}`);
+  console.log(imageError);
 })
 // .then(function(imagesResponse){
 // console.log(imagesResponse);
@@ -20,6 +23,9 @@ myApp.getJokes = $.ajax({
     url: myApp.jokesUrl,
     method: 'GET',
     dataType: 'json'
+}).fail(function (jokeError) {
+  alert(`Get joke failed: ${jokeError.statusText}`);
+  console.log(jokeError);
 })
 
 $.when(myApp.getImages, myApp.getJokes)
@@ -31,9 +37,15 @@ $.when(myApp.getImages, myApp.getJokes)
         $('.invisible').remove();
         appendContent(url);
     })
-    .fail(function (imageError, jokeError) {
-        console.log(imageError, jokeError);
-    })
+    // .fail(function (imageError, jokeError) {
+    //   if (imageError) {
+    //     alert(`Image content failed: ${imageError.statusText}`);
+    //   } else if (jokeError) {
+    //     alert(`Joke content failed: ${jokeError}`)
+    //   };
+    //     console.log(imageError, jokeError);
+    // })
+    // ----------^ tested the fail code, and the image error fail was firing when the error was actually from the joke ajax, so i moved the .fail() from the $.when to the specific $.ajax
 
 const imagesArray = [];
 const jokesArray = [];
