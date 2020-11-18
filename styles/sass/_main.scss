@@ -1,3 +1,27 @@
-body{
-    background-color: red;
+body {
+  // background-color: red;
+}
+
+h1 {
+    font-size: 4rem;
+  text-align: center;
+}
+
+.image-container {
+  img {
+    margin: 0 auto;
+    width: 40%;
+  }
+}
+
+.quote-text {
+    p {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+}
+
+button {
+  font-size: 3rem;
+  padding: 1rem;
 }
