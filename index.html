@@ -9,12 +9,24 @@
 </head>
 <body>
 <main>
+  <header>
     <h1>Dope App</h1>
+  </header>
+  <div class="wrapper">
+    <div class="appendToHere">
+
+    </div>
+  </div>
+  <!-- Thinking we need to rethink our HTML structure here!
+  
+    If we are appending an image + joke, then they should be in the same div, so we can append everything at once. If we have a div for each, then the images will be next to each other, and then the jokes will be next to each other, but we want image/joke pairs. 
+  
+    We could have one div... I made a div.wrapper above, and we can append a div with a joke/image to that?-->
     <div id="image-container" class="image-container">
-        <img src="./assets/Photo 2020-04-13, 1 35 04 AM.jpg" alt="sample image">
+        <!-- <img src="./assets/Photo 2020-04-13, 1 35 04 AM.jpg" alt="sample image"> -->
     </div>
     <div id="quote-text" class="quote-text">
-        <p>Funny joke</p>
+        <!-- <p>Funny joke</p> -->
     </div>
     <button id="btn">Next Joke</button>
 </main>
