@@ -1,10 +1,28 @@
-body {
-  // background-color: red;
-}
+// body {
+//   // background-color: red;
+// }
 
 h1 {
-    font-size: 4rem;
+  font-size: 4rem;
   text-align: center;
+}
+
+.wrapper {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+.imageJokeBox{
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+  }
 }
 
 .image-container {
@@ -14,14 +32,29 @@ h1 {
   }
 }
 
-.quote-text {
-    p {
-        font-size: 3.5rem;
-        text-align: center;
-    }
-}
+// .quote-text {
+//     p {
+//         font-size: 3.5rem;
+//         text-align: center;
+//     }
+// }
 
 button {
   font-size: 3rem;
   padding: 1rem;
+}
+
+// Found this loader online! but need to use this as inspiration, not final result
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
