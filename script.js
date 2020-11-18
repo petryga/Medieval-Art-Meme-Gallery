@@ -32,5 +32,3 @@ $('#btn').on('click', function () {
     let jokeToAppend = `<p>${jokesArray}</p>`
     $('#quote-text').html(jokeToAppend)
 })
-
-
