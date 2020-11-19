@@ -78,3 +78,9 @@ const appendContent = function(imageLink) {
   // })
 }
 
+    //circular menu on/off
+    $('.menu-toggle').click(function () {
+      $('.menu-toggle').toggleClass('open');
+      $('.menu-round').toggleClass('open');
+      $('.menu-line').toggleClass('open');
+  });
