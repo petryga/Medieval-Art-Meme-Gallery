@@ -6,18 +6,20 @@ myApp.jokesUrl = `https://icanhazdadjoke.com/`
 myApp.getImages = $.ajax({
     url: myApp.imagesUrl,
     method: 'GET',
-    dataType: 'json'
+    dataType: 'json',
+    //added data; later on we could create our predefined search options by changing q value
+data: {
+  q: 'portrait',
+  hasImage: 1,
+  // department: 'Medieval Art', - returns only 9 objects ;(( maybe later we could filter by some other department if we want to
+  type: 'Painting',
+}
+
+
 }).fail(function (imageError) {
   alert(`Joke content failed: ${imageError.statusText}`);
   console.log(imageError);
 })
-// .then(function(imagesResponse){
-// console.log(imagesResponse);
-// })
-
-// myApp.getImages.then(function (images) {
-//     console.log(images);
-// })
 
 myApp.getJokes = $.ajax({
     url: myApp.jokesUrl,
@@ -26,50 +28,53 @@ myApp.getJokes = $.ajax({
 }).fail(function (jokeError) {
   alert(`Get joke failed: ${jokeError.statusText}`);
   console.log(jokeError);
+  // maybe display 404 message if we have time for that feature
 })
 
 $.when(myApp.getImages, myApp.getJokes)
     .then(function (image, joke) {
-        const { url } = image[0].data[0].images.web;
-        // console.log(url, joke[0].joke);
+// get a random image 
+for (let i = 0; i < image[0].data.length; i++) {
+  const imagesUrl = image[0].data[i].images.web.url;
+  // console.log(imagesUrl);
+  imagesArray.push(imagesUrl)
+}
+        // const { url } = image[0].data[0].images.web; //first image url - remove later 
         jokesArray.push(joke[0].joke);
-        imagesArray.push(image.url);
+        // imagesArray.push(image.url);
         $('.invisible').remove();
-        appendContent(url);
+        appendContent(url); //not url anymore - gotta fix
     })
-    // .fail(function (imageError, jokeError) {
-    //   if (imageError) {
-    //     alert(`Image content failed: ${imageError.statusText}`);
-    //   } else if (jokeError) {
-    //     alert(`Joke content failed: ${jokeError}`)
-    //   };
-    //     console.log(imageError, jokeError);
-    // })
-    // ----------^ tested the fail code, and the image error fail was firing when the error was actually from the joke ajax, so i moved the .fail() from the $.when to the specific $.ajax
-
+    
 const imagesArray = [];
 const jokesArray = [];
 
-// myApp.getJokes.then(function (jokes) {
-//     jokesArray.push(jokes.joke)
-// })
+console.log(imagesArray);
 
-// ---- I turned your event listener into a function, and I call the function above in $.when (line 31)
+myApp.randomizer = function(array) {
+  const randomArrayIndex = Math.floor(Math.random() * array.length);
+  return array[randomArrayIndex]
+}
+
+const imagesToDisplay = myApp.randomizer(imagesArray)
+// console.log(imagesToDisplay);
+
+// I am stuck here. I could get images urls and put them in an array (line 49), and it displays well when I console.log it (line 52)
+//but when i try to apply randomizer, it shows as undefined, and I can't figure out why. (log on line 60) MUCH STRUGGLE
+
+
 const appendContent = function(imageLink) {
-  //  ------ changed the append variable name, and now appending a div containing the image and the joke to the page on click.
-  // Moved all this code outside the event listener, but inside the function so that there is a image/joke pair that comes up when the page loads
   let pairToAppend = `
   <div class = "imageJokeBox">
     <p>${jokesArray}</p>
   </div>
   `;
   $('.appendToHere').append(pairToAppend);
-  // ----- took the returned image and set it as the background image of div.image-container (had to set height and width for .image-container in _main.scss)
-  $('.imageJokeBox').css('background-image', `url(${imageLink})`)
+  $('.imageJokeBox').css('background-image', `url(${imagesToDisplay})`)
 
+  //BTW great idea to use background images - they don't need alt text :D
 
-  $('#btn').on('click', function () {
-
-  })
+  // $('#btn').on('click', function () {
+  // })
 }
 
