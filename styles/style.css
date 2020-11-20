@@ -279,7 +279,7 @@ form {
 
 .imageJokeBox {
   height: 80vh;
-  width: 100%;
+  width: 600px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
