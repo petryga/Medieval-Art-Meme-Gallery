@@ -11,39 +11,33 @@
 <body>
 <main>
   <header>
-    <h1>Dope App</h1>
+    <div class="container">
+      <h1 id="page-title">~Dope Art~ style: <span class="currentStyle">portrait</span></h1>
+    </div>
+    <form action="">
+      <label for="style">Select your art choice</label>
+      <select name="style" id="style">
+        <option value="people">People</option>
+        <option value="king">King</option>
+        <option value="portrait">Portrait</option>
+      </select>
+    </form>
   </header>
+
   <div class="wrapper">
     <div class="appendToHere">
-      
     </div>
     <div class="loader invisible">
-      
     </div>
   </div>
   
-  <div class="container">
-    <div class="menu-toggle">
+  <!-- <div class="container">
+    <div class="menu-toggle" id="btn">
       <span class="fa fa-plus"></span>
     </div>
-    <div class="menu-line">
-      <div class="btn-app">
-        <!-- <ul class="manual">
-          <li>
-            If you click on a background image, you will be able to see all the
-            images available, one by one
-          </li>
-          <li>
-            Clicking on the red button gives you a random image that is matching
-            your choice
-          </li>
-          <li>Pick between two skylines by clicking the middle button</li>
-        </ul>
-        <p>Aleksandra Petryga @ Juno College 2020</p> -->
-      </div>
     </div>
-  </div>
-    <button id="btn">Next Joke</button>
+  </div> -->
+    <!-- <button id="btn">Next Joke</button> -->
 </main>
     <script src='https://code.jquery.com/jquery-3.4.0.min.js' integrity='sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=' crossorigin='anonymous'></script>
     <script src="script.js"></script>

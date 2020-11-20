@@ -274,7 +274,7 @@ h1 {
 }
 
 .imageJokeBox {
-  min-height: 80vh;
+  height: 80vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -286,12 +286,16 @@ h1 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-repeat: no-repeat;
 }
 
 .imageJokeBox p {
   font-size: 4rem;
-  color: white;
+  color: black;
   text-align: center;
+  background-color: white;
+  width: 40%;
+  margin: 0 auto;
 }
 
 button {
@@ -331,69 +335,4 @@ button {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
-}
-
-body {
-  position: relative;
-}
-
-.container {
-  position: fixed;
-  bottom: 1em;
-  right: 1em;
-}
-
-.menu-toggle {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50px;
-  background-color: #FFE66D;
-  -webkit-box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  z-index: 5;
-  bottom: 0;
-  right: 0;
-  display: table;
-  text-align: center;
-}
-
-.menu-toggle .fa {
-  color: #292F36;
-  font-size: 2em;
-  display: table-cell;
-  vertical-align: middle;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.menu-toggle.open .fa {
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-}
-
-.btn-app {
-  width: 40rem;
-  height: 40rem;
-  border-radius: 50px;
-  position: absolute;
-  background-color: #FFE66D;
-  border: 1px solid #FF6B6B;
-}
-
-.open .btn-app {
-  -webkit-box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.menu-line .btn-app {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
-}
-
-.menu-line.open .btn-app:nth-of-type(1) {
-  bottom: 4.25em;
-  right: 0rem;
 }
