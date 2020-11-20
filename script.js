@@ -4,7 +4,7 @@ myApp.imagesUrl = `https://openaccess-api.clevelandart.org/api/artworks/`
 myApp.jokesUrl = `https://icanhazdadjoke.com/`
 
 myApp.init = function() {
-
+//gotta make it be able to accept a param to pass it to q
 myApp.getImages = $.ajax({
   url: myApp.imagesUrl,
   method: 'GET',
@@ -45,7 +45,6 @@ $.when(myApp.getImages, myApp.getJokes)
       const imagesUrl = image[0].data[i].images.web.url;
       imagesArray.push(imagesUrl);
 
-
       const appendContent = function (imageLink) {
         // check inspector - it shows as imageJokeBox imageJokeBox0
         let pairToAppend = `
@@ -84,14 +83,16 @@ myApp.randomizer = function (array) {
   return array[randomArrayIndex]
 }
 
-// myApp.dropDownEventListener = function(){
-//   ('#style').on('change', function(){
+// myApp.dropDownEventListener = function() {
+//   ('#style').on('change', function() {
 //     const chosenStyle = $(this).val();
 //     $('.imageJokeBox').empty();
 //     myApp.getImages(chosenStyle);
 //     $('.currentStyle').text(chosenStyle);
 //   })
 // }
+// myApp.dropDownEventListener();
+
 //circular menu on/off
 // $('.menu-toggle').click(function () {
 //   $('.menu-toggle').toggleClass('open');

@@ -267,6 +267,10 @@ h1 {
   text-align: center;
 }
 
+form {
+  font-size: 4rem;
+}
+
 .wrapper {
   max-width: 1600px;
   width: 100%;
