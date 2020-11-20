@@ -1,5 +1,4 @@
 // create namespace object
-
 const myApp = {}
 
 // store API endpoint in namespace as well
@@ -12,16 +11,11 @@ myApp.init = function () {
   // define a method to make an AJAX request to API for Images 
   // find where the image url is located within the json file
   myApp.getImages = function (style) {
-    // function(style){
-    //   return 
-    console.log(`inside myApp.getImages`);
     let call = $.ajax({
       url: myApp.imagesUrl,
       method: 'GET',
       dataType: 'json',
       data: {
-        // q: myApp.dropDownEventListener(),
-        // q: 'portrait',
         q: style,
         has_image: 1,
         // department: 'Medieval Art',
@@ -47,13 +41,6 @@ myApp.init = function () {
     });
     return call;
   }
- 
-  myApp.getTheJoke = function () {
-    myApp.getJokes();
-    // let joke = myApp.getJokes.responseJSON.joke;
-    // console.log(joke);
-  }
-  myApp.getTheJoke();
 
   // .fail(function (jokeError) {
   //   alert(`Get joke failed: ${jokeError.statusText}`);
@@ -65,16 +52,13 @@ myApp.init = function () {
   myApp.jokesArray = [];
   console.log(myApp.jokesArray);
 
-  let imagesToDisplay;
-
   // use promises to wait for the data to come from both apis
   $.when(myApp.getImages(), myApp.getJokes())
     .then(function (image, joke) {
-      myApp.jokesArray.push(myApp.getJokes);
-
+      const newJoke = joke[0].joke;
+      console.log(newJoke);
+      myApp.jokesArray.push(newJoke);
       // loop through the arrays and append the data (joke&image) on the page
-      console.log('inside of then');
-      console.log(image[0].data.length);
       for (let i = 0; i < image[0].data.length; i++) {
         // console.log(i);
         const imagesUrl = image[0].data[i].images.web.url;
@@ -83,8 +67,8 @@ myApp.init = function () {
       // console.log(myApp.imagesArray);
       for (let i = 0; i < 10; i++) {
         myApp.appendContent(i);
-        console.log('after append content');
       }
+
       //add pseudo code here
       $('.invisible').remove();
     })
@@ -92,7 +76,6 @@ myApp.init = function () {
   // create a randomizer to show random jokes and images if needed
   myApp.randomizer = function (array) {
     const randomArrayIndex = Math.floor(Math.random() * array.length);
-    console.log(randomArrayIndex);
     return array[randomArrayIndex]
   }
 
@@ -134,24 +117,16 @@ $(function () {
 
   myApp.init()
 
-
 })
 myApp.appendContent = function (i) {
-  console.log('inside append');
   // check inspector - it shows as imageJokeBox imageJokeBox0
   let pairToAppend = `
 <div class = "imageJokeBox">
-<p>${jokesArray}</p>
+<p>${myApp.jokesArray}</p>
 </div>
 `;
   $('.appendToHere').append(pairToAppend);
-
-  imagesToDisplay = myApp.randomizer(myApp.imagesArray);
-  console.log(`inside append content`, imagesToDisplay);
-
+  let imagesToDisplay = myApp.randomizer(myApp.imagesArray);
   $(`.imageJokeBox`).css('background-image', `url(${imagesToDisplay})`)
   // jokesArray.push(joke[0].joke);
 }
-
-//
-
