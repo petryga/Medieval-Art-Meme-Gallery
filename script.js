@@ -55,6 +55,7 @@ myApp.init = function () {
   // use promises to wait for the data to come from both apis
   $.when(myApp.getImages(), myApp.getJokes())
     .then(function (image, joke) {
+      console.log(joke);
       const newJoke = joke[0].joke;
       console.log(newJoke);
       myApp.jokesArray.push(newJoke);
