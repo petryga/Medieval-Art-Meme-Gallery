@@ -277,6 +277,10 @@ form {
   margin: 0 auto;
 }
 
+.welcome-div {
+  height: 100vh;
+}
+
 .imageJokeBox {
   height: 80vh;
   width: 600px;
