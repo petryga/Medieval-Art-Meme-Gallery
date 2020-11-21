@@ -64,19 +64,28 @@ myApp.init = function () {
         // console.log(i);
         const newJoke = joke[0].results[i].joke;
         myApp.jokesArray.push(newJoke);
+
         // console.log(newJoke);
       }
 
       // console.log(newJoke);
       // myApp.jokesArray.push(newJoke);
       // loop through the arrays and append the data (joke&image) on the page
+
       for (let i = 0; i < image[0].data.length; i++) {
         // console.log(i);
         const imagesUrl = image[0].data[i].images.web.url;
         myApp.imagesArray.push(imagesUrl);
       }
+
+      myApp.randomizer(myApp.imagesArray);
       console.log(myApp.imagesArray);
-      for (let i = 0; i < 30; i++) {
+
+
+
+
+      // APPEND CONTENT LOOP
+      for (let i = 0; i < 10; i++) {
         // console.log(myApp.imagesArray);
         myApp.appendContent(i);
       }
@@ -139,6 +148,7 @@ myApp.appendContent = function (i) {
   `;
   $('.appendToHere').append(pairToAppend);
   let imagesToDisplay = myApp.randomizer(myApp.imagesArray);
-  $(`.imageJokeBox${i}`).css('background-image', `url(${myApp.imagesArray[i]})`);
+  console.log(imagesToDisplay);
+  $(`.imageJokeBox${i}`).css('background-image', `url(${imagesToDisplay})`);
   // jokesArray.push(joke[0].joke);
 }
