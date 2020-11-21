@@ -54,11 +54,13 @@ myApp.init = function () {
 
   myApp.imagesArray = [];
   myApp.jokesArray = [];
+
   // console.log(myApp.jokesArray);
 
   // use promises to wait for the data to come from both apis
   $.when(myApp.getImages(), myApp.getJokes())
     .then(function (image, joke) {
+
       console.log(joke);
       for (let i = 0; i < joke[0].results.length; i++) {
         // console.log(i);
@@ -72,6 +74,7 @@ myApp.init = function () {
       // myApp.jokesArray.push(newJoke);
       // loop through the arrays and append the data (joke&image) on the page
 
+
       for (let i = 0; i < image[0].data.length; i++) {
         // console.log(i);
         const imagesUrl = image[0].data[i].images.web.url;
@@ -80,8 +83,6 @@ myApp.init = function () {
 
       myApp.randomizer(myApp.imagesArray);
       console.log(myApp.imagesArray);
-
-
 
 
       // APPEND CONTENT LOOP
@@ -150,5 +151,6 @@ myApp.appendContent = function (i) {
   let imagesToDisplay = myApp.randomizer(myApp.imagesArray);
   console.log(imagesToDisplay);
   $(`.imageJokeBox${i}`).css('background-image', `url(${imagesToDisplay})`);
+
   // jokesArray.push(joke[0].joke);
 }
