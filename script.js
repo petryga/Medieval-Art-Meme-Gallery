@@ -1,22 +1,23 @@
 // namespace
 const myApp = {}
 
-myApp.imagesPortraitsArray = [];
-myApp.imagesWomanArray = [];
-myApp.imagesPeopleArray = [];
-
 let selectedArray;
-
-myApp.jokesArray = [];
-
 
 myApp.imageUrl = `https://openaccess-api.clevelandart.org/api/artworks/`;
 myApp.jokesUrl = `https://icanhazdadjoke.com/search`;
 
+myApp.imagesPortraitsArray = [];
+myApp.imagesWomanArray = [];
+myApp.imagesPeopleArray = [];
+myApp.jokesArray = [];
+
+myApp.limit = 30; //current limit of jokes on the API
+myApp.counter = 0;
+myApp.increment = 5;
 
 // AJAX CALLS
 myApp.getPortraitImages = function () {
-  $.ajax({
+  return $.ajax({
     url: myApp.imageUrl,
     method: 'GET',
     dataType: 'json',
@@ -26,26 +27,15 @@ myApp.getPortraitImages = function () {
       type: 'Painting',
     }
   })
-    .then(function (image) {
-      console.log('portraits returned')
-      // console.log(image.data[0].images.web.url);
-      // console.log(i);
-      for (let i = 0; i < 100; i++) {
-        const imagesPortraitUrl = image.data[i].images.web.url;
-        myApp.imagesPortraitsArray.push(imagesPortraitUrl);
+    .then(function (returnObject) {
+      for (let i = 0; i < myApp.limit; i++) {
+        myApp.imagesPortraitsArray.push(returnObject.data[i].images.web.url);
       }
-      // console.log(myApp.imagesPortraitsArray);
-    })
-    .then(() => {
-      if ($('#dropDown').val() == 'portrait') {
-        selectedArray = myApp.imagesPortraitArray;
-      }
-      // console.log(selectedArray);
     })
 }
 
 myApp.getWomanImages = function () {
-  $.ajax({
+  return $.ajax({
     url: myApp.imageUrl,
     method: 'GET',
     dataType: 'json',
@@ -56,25 +46,14 @@ myApp.getWomanImages = function () {
     }
   })
     .then(function (image) {
-      console.log('women returned');
-      // console.log(image.data[0].images.web.url);
-      // console.log(i);
-      for (let i = 0; i < 100; i++) {
-        const imagesWomanUrl = image.data[i].images.web.url;
-        myApp.imagesWomanArray.push(imagesWomanUrl);
+      for (let i = 0; i < myApp.limit; i++) {
+        myApp.imagesWomanArray.push(image.data[i].images.web.url);
       }
-      // console.log(myApp.imagesWomanArray);
-    })
-    .then(() => {
-      if ($('#drop-down').val() == 'woman') {
-        selectedArray = myApp.imagesWomanArray;
-      }
-      // console.log(selectedArray);
     })
 }
 
 myApp.getPeopleImages = function () {
-  $.ajax({
+  return $.ajax({
     url: myApp.imageUrl,
     method: 'GET',
     dataType: 'json',
@@ -84,26 +63,14 @@ myApp.getPeopleImages = function () {
       type: 'Painting',
     }
   }).then(function (image) {
-    console.log('people returned');
-    // console.log(i);
-    // console.log(image.data);
-    for (let i = 0; i < image.data.length; i++) {
-      const imagesPeopleUrl = image.data[i].images.web.url;
-      // console.log(image.data[0].images.web.url);
-      myApp.imagesPeopleArray.push(imagesPeopleUrl);
+    for (let i = 0; i < myApp.limit; i++) {
+      myApp.imagesPeopleArray.push(image.data[i].images.web.url);
     }
-    // console.log(myApp.imagesPeopleArray);
   })
-    .then(() => {
-      if ($('#drop-down').val() == 'people') {
-        selectedArray = myApp.imagesPeopleArray;
-      }
-      // console.log(selectedArray);
-    })
 }
 
 myApp.getJokes = function () {
-  $.ajax({
+  return $.ajax({
     url: myApp.jokesUrl,
     method: 'GET',
     dataType: 'json',
@@ -111,25 +78,26 @@ myApp.getJokes = function () {
       limit: 30,
       headers: { 'Accept': 'application/JSON' }
     }
-  }).then(function (jokeReturn) {
-    console.log('jokes returned');
-    for (let i = 0; i <= jokeReturn.results.length; i++) {
-      const jokes = jokeReturn.results[i].joke;
-      myApp.jokesArray.push(jokes);
-    }
-    // console.log(myApp.jokesArray);
   })
+    .then(function (jokeReturn) {
+      for (let i = 0; i < jokeReturn.results.length; i++) {
+        myApp.jokesArray.push(jokeReturn.results[i].joke);
+      }
+    })
 }
 
-
-
-
-
+myApp.randomizer = function (array) {
+  for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+  return arr;
+}
 
 
 // select image array
 myApp.dropDownEventListener = function () {
   $('#drop-down').on('change', function () {
+    myApp.counter = 0;
+    myApp.increment = 5;
+    $('.append-to-here').empty();
     if ($(this).val() == 'portrait') {
       selectedArray = myApp.imagesPortraitsArray;
     } else if ($(this).val() == 'woman') {
@@ -137,18 +105,11 @@ myApp.dropDownEventListener = function () {
     } else if ($(this).val() == 'people') {
       selectedArray = myApp.imagesPeopleArray;
     }
-    // console.log(selectedArray);
+    console.log(selectedArray[1]);
     myApp.appendContent(selectedArray, myApp.jokesArray);
     myApp.scrollFunction(selectedArray, myApp.jokesArray);
   })
 }
-// .then(() => {
-
-// })
-
-
-myApp.counter = 0;
-myApp.increment = 5;
 
 myApp.appendContent = function (chosenArray, jokesArray) {
   do {
@@ -163,7 +124,7 @@ myApp.appendContent = function (chosenArray, jokesArray) {
     myApp.counter++;
   }
   while (myApp.counter < myApp.increment);
-    myApp.scrollFunction(chosenArray, jokesArray);
+  myApp.scrollFunction(chosenArray, jokesArray);
 }
 
 console.log("scroll to Top is : ", $(window).scrollTop());
@@ -171,11 +132,16 @@ console.log("the window height is: ", $(window).height());
 console.log("scroll and window = ", ($(window).scrollTop() + $(window).height()));
 console.log("the document height is: ", $(document).height());
 
-myApp.scrollFunction= function(imageArray, jokeArray) {
-  $(window).on('scroll', function() {
-    if (Math.round($(window).scrollTop() + $(window).height()) === $(document).height()) {
-      myApp.increment + 5;
-      myApp.appendContent(imageArray, jokeArray);
+myApp.scrollFunction = function (imageArray, jokeArray) {
+  $(window).on('scroll', function () {
+    if (Math.round(($(window).scrollTop() + $(window).height()) === $(document).height())) {
+      if (myApp.counter < myApp.limit) {
+        myApp.increment + 5;
+        myApp.appendContent(imageArray, jokeArray);
+      }
+      else {
+        alert('We gona send you allllll the way back');
+      }
     }
   })
 }
@@ -184,17 +150,21 @@ myApp.scrollFunction= function(imageArray, jokeArray) {
 // INIT
 myApp.init = function () {
   myApp.dropDownEventListener();
-
-  myApp.getPortraitImages();
-  myApp.getWomanImages();
-  myApp.getPeopleImages();
-  myApp.getJokes();
-
-  // $('.after-ajax').removeClass('.none'),
-  // myApp.appendContent()
+  $.when(
+    myApp.getPortraitImages(),
+    myApp.getWomanImages(),
+    myApp.getPeopleImages(),
+    myApp.getJokes())
+    .done(function (a1, a2, a3, a4) {
+      $('.loader').css('display', 'none')
+      $('.after-ajax').css('opacity', '100');
+      // the code here will be executed when all four ajax requests resolve.
+      // a1, a2, a3 and a4 are lists of length 3 containing the response text,
+      // status, and jqXHR object for each of the four ajax calls respectively.
+    });
 }
+
 // DOC READY 
 $(function () {
-  myApp.init()
-
+  myApp.init();
 })

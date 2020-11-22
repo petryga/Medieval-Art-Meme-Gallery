@@ -283,11 +283,6 @@ form {
   background-color: black;
 }
 
-.welcome-div {
-  height: 150vh;
-  background-image: url(../assets/aleksandra-cat.jpg);
-}
-
 .image-joke-box {
   height: 80vh;
   width: 600px;
@@ -393,4 +388,8 @@ body {
 
 .none {
   display: none;
+}
+
+.after-ajax {
+  opacity: 0%;
 }

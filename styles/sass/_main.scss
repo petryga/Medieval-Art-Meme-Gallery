@@ -18,10 +18,9 @@ form {
   width: 100%;
   background-color: black;
 }
-.welcome-div {
-  height: 150vh;
-  background-image: url(../assets/aleksandra-cat.jpg);
-}
+// .welcome-div {
+//   // background-image: url(../../assets/aleksandra-cat.jpg);
+// }
 
 .image-joke-box{
   height: 80vh;
@@ -104,4 +103,8 @@ body {
 
 .none {
   display: none;
+}
+
+.after-ajax{
+  opacity: 0%;
 }
