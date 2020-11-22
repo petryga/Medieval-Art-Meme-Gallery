@@ -1,71 +1,109 @@
-// create namespace object
+// namespace
 const myApp = {}
 
-myApp.imagesArray = [];
+myApp.imagesPortraitsArray = [];
+myApp.imagesWomanArray = [];
+myApp.imagesPeopleArray = [];
+
+let selectedArray;
+
 myApp.jokesArray = [];
-myApp.userArtSelection;
+
 
 myApp.imageUrl = `https://openaccess-api.clevelandart.org/api/artworks/`;
 myApp.jokesUrl = `https://icanhazdadjoke.com/search`;
 
-// GET IMAGES AJAX CALL
-myApp.getImages = function () {
-  let call = $.ajax({
+
+// AJAX CALLS
+myApp.getPortraitImages = function () {
+  $.ajax({
     url: myApp.imageUrl,
     method: 'GET',
     dataType: 'json',
     data: {
       q: 'portrait',
       has_image: 1,
-      // department: 'Medieval Art',
       type: 'Painting',
     }
-  });
-  return call;
+  })
+    .then(function (image) {
+      console.log('portraits returned')
+      // console.log(image.data[0].images.web.url);
+      // console.log(i);
+      for (let i = 0; i < 100; i++) {
+        const imagesPortraitUrl = image.data[i].images.web.url;
+        myApp.imagesPortraitsArray.push(imagesPortraitUrl);
+      }
+      // console.log(myApp.imagesPortraitsArray);
+    })
+    .then(() => {
+      if ($('#dropDown').val() == 'portrait') {
+        selectedArray = myApp.imagesPortraitArray;
+      }
+      // console.log(selectedArray);
+    })
 }
 
-myApp.getImages2 = function (style) {
-  let call = $.ajax({
+myApp.getWomanImages = function () {
+  $.ajax({
     url: myApp.imageUrl,
     method: 'GET',
     dataType: 'json',
     data: {
-      q: style,
+      q: 'woman',
       has_image: 1,
-      // department: 'Medieval Art',
+      type: 'Painting',
+    }
+  })
+    .then(function (image) {
+      console.log('women returned');
+      // console.log(image.data[0].images.web.url);
+      // console.log(i);
+      for (let i = 0; i < 100; i++) {
+        const imagesWomanUrl = image.data[i].images.web.url;
+        myApp.imagesWomanArray.push(imagesWomanUrl);
+      }
+      // console.log(myApp.imagesWomanArray);
+    })
+    .then(() => {
+      if ($('#drop-down').val() == 'woman') {
+        selectedArray = myApp.imagesWomanArray;
+      }
+      // console.log(selectedArray);
+    })
+}
+
+myApp.getPeopleImages = function () {
+  $.ajax({
+    url: myApp.imageUrl,
+    method: 'GET',
+    dataType: 'json',
+    data: {
+      q: 'people',
+      has_image: 1,
       type: 'Painting',
     }
   }).then(function (image) {
-
-    // console.log(image);
-    myApp.imagesArray = [];
+    console.log('people returned');
+    // console.log(i);
+    // console.log(image.data);
     for (let i = 0; i < image.data.length; i++) {
-      // console.log(i);
-      const imagesUrl = image.data[i].images.web.url;
-      myApp.imagesArray.push(imagesUrl);
-      console.log(imagesUrl);
-      console.log(myApp.imagesArray);
+      const imagesPeopleUrl = image.data[i].images.web.url;
+      // console.log(image.data[0].images.web.url);
+      myApp.imagesPeopleArray.push(imagesPeopleUrl);
     }
-    for (let i = 0; i < 5; i++) {
-      // console.log(myApp.imagesArray);
-      myApp.appendContent(i);
-    }
-
-    //add pseudo code here
-
-    $('.invisible').remove();
+    // console.log(myApp.imagesPeopleArray);
   })
+    .then(() => {
+      if ($('#drop-down').val() == 'people') {
+        selectedArray = myApp.imagesPeopleArray;
+      }
+      // console.log(selectedArray);
+    })
 }
 
-
-// .fail(function (imageError) {
-//   alert(`Joke content failed: ${imageError.statusText}`);
-//   console.log(imageError);
-// })
-
-// GET JOKES AJAX CALL FUNCTION
 myApp.getJokes = function () {
-  let call = $.ajax({
+  $.ajax({
     url: myApp.jokesUrl,
     method: 'GET',
     dataType: 'json',
@@ -73,142 +111,88 @@ myApp.getJokes = function () {
       limit: 30,
       headers: { 'Accept': 'application/JSON' }
     }
-  });
-  return call;
-}
-
-// .fail(function (jokeError) {
-//   alert(`Get joke failed: ${jokeError.statusText}`);
-//   console.log(jokeError);
-//   // maybe display 404 message if we have time for that feature
-// })
-
-// RANDOMIZER FUNCTION
-myApp.randomizer = function (array) {
-  const randomArrayIndex = Math.floor(Math.random() * array.length);
-  return array[randomArrayIndex]
-}
-
-// EVENT LISTENER FUNCTION
-myApp.dropDownEventListener = function () {
-  $('#style').on('change', function () {
-    // console.log($(this).val());
-    const chosenStyle = $(this).val();
-    $('.appendToHere').empty();
-    myApp.getImages2(chosenStyle);
-
-
-    // find how to get to the data in the return
-    // clear array first
-    // put these URLs into the array
-    // use append content with this new array
-
-    // Update Array with new ajax call
-    // console.log(myApp.imagesArray);
-
-
-
-    // FInd a way to make append content find the new array and then append that.
-    // myApp.appendContent();
-    $('.currentStyle').text(chosenStyle);
+  }).then(function (jokeReturn) {
+    console.log('jokes returned');
+    for (let i = 0; i <= jokeReturn.results.length; i++) {
+      const jokes = jokeReturn.results[i].joke;
+      myApp.jokesArray.push(jokes);
+    }
+    // console.log(myApp.jokesArray);
   })
 }
 
 
-// circular menu on/off
-$('.menu-toggle').click(function () {
-  $('.menu-toggle').toggleClass('open');
-  $('.menu-round').toggleClass('open');
-  $('.menu-line').toggleClass('open');
-});
-
-
-
-// Infinite Scroll Function
-
-$(window).scroll(function () {
-  if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-    console.log('bottom');
-  }
-});
 
 
 
 
 
-//   $(window).on("scroll", function () {
-//     //page height
-//     let docHeight = $(document).height();
-//     //scroll position
-//     let windowHeightPlusDistanceToTop = $(window).height() + $(window).scrollTop();
-//     // fire if the scroll position is 300 pixels above the bottom of the page
-//     if (((docHeight - 300) >= windowHeightPlusDistanceToTop) / docHeight == 0) {
-//       console.log('bottom');
-//     }
-//   });
+// select image array
+myApp.dropDownEventListener = function () {
+  $('#drop-down').on('change', function () {
+    if ($(this).val() == 'portrait') {
+      selectedArray = myApp.imagesPortraitsArray;
+    } else if ($(this).val() == 'woman') {
+      selectedArray = myApp.imagesWomanArray;
+    } else if ($(this).val() == 'people') {
+      selectedArray = myApp.imagesPeopleArray;
+    }
+    // console.log(selectedArray);
+    myApp.appendContent(selectedArray, myApp.jokesArray);
+    myApp.scrollFunction(selectedArray, myApp.jokesArray);
+  })
+}
+// .then(() => {
+
+// })
 
 
-// APPEND CONTENT FUNCTION
-myApp.appendContent = function (i) {
-  // check inspector - it shows as imageJokeBox imageJokeBox0
-  let pairToAppend = `
-    <div class = "imageJokeBox imageJokeBox${i}">
-      <p>${myApp.jokesArray[i]}</p>
+myApp.counter = 0;
+myApp.increment = 5;
+
+myApp.appendContent = function (chosenArray, jokesArray) {
+  do {
+    let imageJokeBox = `
+    <div class = "image-joke-box image-joke-box${myApp.counter}">
+      <p>${jokesArray[myApp.counter]}</p>
     </div>
-  `;
-
-  $('.appendToHere').append(pairToAppend);
-  let imagesToDisplay = myApp.randomizer(myApp.imagesArray);
-  // console.log(imagesToDisplay);
-  $(`.imageJokeBox${i}`).css('background-image', `url(${imagesToDisplay})`);
-
-  // $('html').delay(5000).animate({
-  //   scrollTop: $(`.imageJokeBox${i}`).offset().top
-  // }, 6000);
+    `;
+    $('.append-to-here').append(imageJokeBox);
+    // console.log(chosenArray);
+    $(`.image-joke-box${myApp.counter}`).css('background-image', `url('${chosenArray[myApp.counter]}')`);
+    myApp.counter++;
+  }
+  while (myApp.counter < myApp.increment);
+    myApp.scrollFunction(chosenArray, jokesArray);
 }
 
-// INIT FUNCTION
+console.log("scroll to Top is : ", $(window).scrollTop());
+console.log("the window height is: ", $(window).height());
+console.log("scroll and window = ", ($(window).scrollTop() + $(window).height()));
+console.log("the document height is: ", $(document).height());
+
+myApp.scrollFunction= function(imageArray, jokeArray) {
+  $(window).on('scroll', function() {
+    if (Math.round($(window).scrollTop() + $(window).height()) === $(document).height()) {
+      myApp.increment + 5;
+      myApp.appendContent(imageArray, jokeArray);
+    }
+  })
+}
+
+
+// INIT
 myApp.init = function () {
   myApp.dropDownEventListener();
-  $.when(myApp.getImages(), myApp.getJokes())
-    .then(function (image, joke) {
-      // console.log(joke);
 
-      // Loop that appends jokes to Joke array when joke AJAX returns
-      for (let i = 0; i < joke[0].results.length; i++) {
-        const newJoke = joke[0].results[i].joke;
-        // console.log(newJoke);
-        myApp.jokesArray.push(newJoke);
-      }
+  myApp.getPortraitImages();
+  myApp.getWomanImages();
+  myApp.getPeopleImages();
+  myApp.getJokes();
 
-      // Loop that appends images to image array when image AJAX returns
-      for (let i = 0; i < image[0].data.length; i++) {
-        // console.log(i);
-        const imagesUrl = image[0].data[i].images.web.url;
-        myApp.imagesArray.push(imagesUrl);
-      }
-      console.log(myApp.imagesArray);
-
-      // Call infinte scroll function here 
-
-      // APPEND CONTENT LOOP
-      // for (let i = 0; i < 30; i++) {
-      //   if (i % 5 != 0) {
-      //     // myApp.appendContent(i);
-      //     console.log(i);
-      //   } else {
-      //     // console.log(i);
-
-      //     // myApp.appendContent(i);
-      //   }
-
-      // }
-
-      // pseudo code
-      $('.invisible').remove();
-    })
+  // $('.after-ajax').removeClass('.none'),
+  // myApp.appendContent()
 }
-
 // DOC READY 
 $(function () {
   myApp.init()
