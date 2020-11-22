@@ -7,10 +7,24 @@ form {
   font-size: 4rem;
 }
 
+main {
+  background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .wrapper {
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
+}
+
+.main-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loader {
@@ -18,17 +32,28 @@ form {
   width: 100%;
   background-color: black;
 }
-// .welcome-div {
-//   // background-image: url(../../assets/aleksandra-cat.jpg);
-// }
+
+.welcome-div {
+  background-image: url(../assets/aleksandra-cat.jpg);
+  min-height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.append-to-here{
+  width: 100%;
+}
 
 .image-joke-box{
   height: 80vh;
-  width: 600px;
+  width: 100%;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   background-repeat: no-repeat;
+  margin-bottom: 6rem;
   p {
     font-size: 4rem;
     color: black;
