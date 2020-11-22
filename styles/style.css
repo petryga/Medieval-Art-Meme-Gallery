@@ -277,11 +277,18 @@ form {
   margin: 0 auto;
 }
 
-.welcome-div {
+.loader {
   height: 100vh;
+  width: 100%;
+  background-color: black;
 }
 
-.imageJokeBox {
+.welcome-div {
+  height: 150vh;
+  background-image: url(../assets/aleksandra-cat.jpg);
+}
+
+.image-joke-box {
   height: 80vh;
   width: 600px;
   display: -webkit-box;
@@ -297,7 +304,7 @@ form {
   background-repeat: no-repeat;
 }
 
-.imageJokeBox p {
+.image-joke-box p {
   font-size: 4rem;
   color: black;
   text-align: center;
@@ -343,4 +350,47 @@ button {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+body {
+  position: relative;
+}
+
+.container {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+}
+
+.menu-toggle {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50px;
+  background-color: #FFE66D;
+  -webkit-box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  right: 0;
+  display: table;
+  text-align: center;
+}
+
+.menu-toggle .fa {
+  color: #292F36;
+  font-size: 2em;
+  display: table-cell;
+  vertical-align: middle;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.menu-toggle.open .fa {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.none {
+  display: none;
 }

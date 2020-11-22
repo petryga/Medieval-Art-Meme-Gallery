@@ -12,11 +12,18 @@ form {
   width: 100%;
   margin: 0 auto;
 }
-.welcome-div {
+
+.loader {
   height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+.welcome-div {
+  height: 150vh;
+  background-image: url(../assets/aleksandra-cat.jpg);
 }
 
-.imageJokeBox{
+.image-joke-box{
   height: 80vh;
   width: 600px;
   display: flex;
@@ -55,43 +62,46 @@ button {
 }
 
 // Circular menu courtesy of Simon Gooder https://codepen.io/simgooder/pen/bVLjgM
-// @mixin circle($param) {
-//   width: $param;
-//   height: $param;
-//   border-radius: 50px;
-// }
+@mixin circle($param) {
+  width: $param;
+  height: $param;
+  border-radius: 50px;
+}
 
-// body {
-//   position: relative;
-// }
+body {
+  position: relative;
+}
 
-// .container {
-//   position: fixed;
-//   bottom: 1em;
-//   right: 1em;
-// }
+.container {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+}
 
-// .menu-toggle {
-//   @include circle(7rem);
-//   background-color: $yellow;
-//   box-shadow: 4px 4px 2px 1px rgba(#000, 0.2);
-//   position: absolute;
-//   z-index: 5;
-//   bottom: 0;
-//   right: 0;
-//   display: table;
-//   text-align: center;
+.menu-toggle {
+  @include circle(7rem);
+  background-color: $yellow;
+  box-shadow: 4px 4px 2px 1px rgba(#000, 0.2);
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  right: 0;
+  display: table;
+  text-align: center;
 
-//   .fa {
-//     color: $gunmetal;
-//     font-size: 2em;
-//     display: table-cell;
-//     vertical-align: middle;
-//     transition: 0.4s;
-//   }
+  .fa {
+    color: $gunmetal;
+    font-size: 2em;
+    display: table-cell;
+    vertical-align: middle;
+    transition: 0.4s;
+  }
 
-//   &.open .fa {
-//     transform: rotate(135deg);
-//   }
-// }
+  &.open .fa {
+    transform: rotate(135deg);
+  }
+}
 
+.none {
+  display: none;
+}
