@@ -279,9 +279,7 @@ body {
 
 .loading .loader {
   border: 1.6rem solid #C0CAAD;
-  /* Light grey */
   border-top: 1.6rem solid #B26E63;
-  /* Blue */
   border-radius: 50%;
   width: 12rem;
   height: 12rem;

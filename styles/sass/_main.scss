@@ -1,4 +1,4 @@
-// Found this loader online! but need to use this as inspiration, not final result
+// loader courtesy of w3 schools https://www.w3schools.com/howto/howto_css_loader.asp
 .loading{
   height: 100vh;
   width: 100%;
@@ -6,8 +6,8 @@
   justify-content: center;
   align-items: center;
   .loader {
-    border: 1.6rem solid $green; /* Light grey */
-    border-top: 1.6rem solid $copper; /* Blue */
+    border: 1.6rem solid $green;
+    border-top: 1.6rem solid $copper; 
     border-radius: 50%;
     width: 12rem;
     height: 12rem;
@@ -162,7 +162,6 @@ footer {
   p, a {
     color: $khaki;
     font-size: 2rem;
-    // display: inline;
   }
   a {
     text-decoration: none;
