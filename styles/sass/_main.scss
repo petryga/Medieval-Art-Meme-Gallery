@@ -91,6 +91,7 @@ form {
   background-repeat: no-repeat;
   background-size: contain;
   margin: 6rem auto;
+  position: relative;
   p {
     color: $rose;
     text-align: center;
@@ -99,6 +100,10 @@ form {
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 }
 
