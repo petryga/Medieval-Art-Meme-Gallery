@@ -202,15 +202,6 @@ template {
   display: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: '';
-  clear: both;
-  height: 0;
-}
-
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -352,7 +343,7 @@ nav h1 {
 }
 
 main {
-  min-height: 100vh;
+  min-height: calc(100vh - 2rem);
   background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -382,8 +373,8 @@ form label {
 }
 
 .welcome-div img {
-  width: 40%;
-  margin: 10rem auto;
+  width: 50%;
+  margin: 20rem auto;
 }
 
 .append-to-here {
@@ -432,7 +423,7 @@ form label {
           box-shadow: 0.4rem 0.4rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
   position: fixed;
   z-index: 5;
-  bottom: 2rem;
+  bottom: 4rem;
   right: 2rem;
   display: table;
   text-align: center;
@@ -483,4 +474,37 @@ footer {
 
 .footer-container a {
   text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  nav .nav-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  nav h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  form {
+    width: auto;
+  }
+  form select {
+    width: 100%;
+    font-family: "Castoro", serif;
+    font-size: 3rem;
+    background-color: #C0CAAD;
+    padding-right: 1rem;
+    border: none;
+    color: #654C4F;
+    text-align: right;
+    border-radius: 0.5rem;
+  }
+  .menu-toggle {
+    bottom: 2rem;
+  }
 }

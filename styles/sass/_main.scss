@@ -20,7 +20,6 @@
   100% { transform: rotate(360deg); }
 }
 
-
 .none {
   display: none;
 }
@@ -49,15 +48,13 @@ nav {
 }
 
 main {
-  min-height: 100vh;
+  min-height: calc(100vh - 2rem);
   background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
-
-
 
 form {
   font-size: 4rem;
@@ -72,12 +69,10 @@ form {
   align-items: center;
 }
 
-
-
 .welcome-div {
   img {
-    width: 40%;
-    margin: 10rem auto;
+    width: 50%;
+    margin: 20rem auto;
   }
 }
 
@@ -107,7 +102,6 @@ form {
   }
 }
 
-
 // Circular menu courtesy of Simon Gooder https://codepen.io/simgooder/pen/bVLjgM
 @mixin circle($param) {
   width: $param;
@@ -126,7 +120,7 @@ form {
   box-shadow: 0.4rem 0.4rem 0.2rem 0.1rem rgba(#000, 0.2);
   position: fixed;
   z-index: 5;
-  bottom: 2rem;
+  bottom: 4rem;
   right: 2rem;
   display: table;
   text-align: center;
@@ -162,6 +156,7 @@ form {
 footer {
   background-color: $rose;
 }
+
 .footer-container {
   text-align: center;
   p, a {
