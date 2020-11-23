@@ -235,9 +235,17 @@ html {
   overflow: hidden;
 }
 
-* {
+*, h1, p {
   margin: 0;
   padding: 0;
+}
+
+h1, p {
+  font-family: 'Castoro', serif;
+}
+
+p, a, span {
+  font-size: 3rem;
 }
 
 html {
@@ -250,112 +258,42 @@ img {
   display: block;
 }
 
+body {
+  position: relative;
+}
+
 .wrapper {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
+}
+
+.flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.loading {
+  height: 100vh;
+  width: 100%;
+  background-color: #9DA9A0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-h1 {
-  font-size: 4rem;
-  text-align: center;
-}
-
-form {
-  font-size: 4rem;
-}
-
-main {
-  background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.wrapper {
-  max-width: 1600px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.main-image {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.loader {
-  height: 100vh;
-  width: 100%;
-  background-color: black;
-}
-
-.welcome-div {
-  background-image: url(../assets/aleksandra-cat.jpg);
-  min-height: 90vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.append-to-here {
-  width: 100%;
-}
-
-.image-joke-box {
-  height: 80vh;
-  width: 100%;
-  background-position: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  background-repeat: no-repeat;
-  margin-bottom: 6rem;
-}
-
-.image-joke-box p {
-  font-size: 4rem;
-  color: black;
-  text-align: center;
-  background-color: white;
-  width: 40%;
-  margin: 0 auto;
-}
-
-button {
-  font-size: 3rem;
-  padding: 1rem;
-}
-
-.loader {
-  border: 16px solid #f3f3f3;
+.loading .loader {
+  border: 1.6rem solid #C0CAAD;
   /* Light grey */
-  border-top: 16px solid #3498db;
+  border-top: 1.6rem solid #B26E63;
   /* Blue */
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 12rem;
+  height: 12rem;
   -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
 }
@@ -382,33 +320,126 @@ button {
   }
 }
 
-body {
-  position: relative;
+.none {
+  display: none;
 }
 
-.container {
+.after-loading {
+  opacity: 0%;
+}
+
+header {
   position: fixed;
-  bottom: 1em;
-  right: 1em;
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  background-color: #654C4F;
+}
+
+nav .nav-container {
+  padding: 1rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav h1 {
+  display: inline;
+  font-size: 4rem;
+  color: #CEC075;
+}
+
+main {
+  min-height: 100vh;
+  background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+form {
+  font-size: 4rem;
+}
+
+form label {
+  font-size: 2rem;
+}
+
+.main-image {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.welcome-div img {
+  width: 40%;
+  margin: 10rem auto;
+}
+
+.append-to-here {
+  width: 100%;
+  height: 100%;
+  padding-top: 6rem;
+}
+
+.image-joke-box {
+  height: 80vh;
+  width: 70%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 6rem auto;
+}
+
+.image-joke-box p {
+  color: #654C4F;
+  text-align: center;
+  background-color: #C0CAAD;
+  width: 85%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background-color: #C0CAAD;
 }
 
 .menu-toggle {
   width: 7rem;
   height: 7rem;
-  border-radius: 50px;
-  background-color: #FFE66D;
-  -webkit-box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.2);
-  position: absolute;
+  border-radius: 5rem;
+  background-color: #CEC075;
+  -webkit-box-shadow: 0.4rem 0.4rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0.4rem 0.4rem 0.2rem 0.1rem rgba(0, 0, 0, 0.2);
+  position: fixed;
   z-index: 5;
-  bottom: 0;
-  right: 0;
+  bottom: 2rem;
+  right: 2rem;
   display: table;
   text-align: center;
 }
 
 .menu-toggle .fa {
-  color: #292F36;
+  color: #654C4F;
   font-size: 2em;
   display: table-cell;
   vertical-align: middle;
@@ -421,10 +452,35 @@ body {
           transform: rotate(135deg);
 }
 
-.none {
-  display: none;
+form {
+  width: 20%;
 }
 
-.after-ajax {
-  opacity: 0%;
+form select {
+  width: 100%;
+  font-family: 'Castoro', serif;
+  font-size: 3rem;
+  background-color: #C0CAAD;
+  padding-right: 1rem;
+  border: none;
+  color: #654C4F;
+  text-align: right;
+  border-radius: 0.5rem;
+}
+
+footer {
+  background-color: #654C4F;
+}
+
+.footer-container {
+  text-align: center;
+}
+
+.footer-container p, .footer-container a {
+  color: #CEC075;
+  font-size: 2rem;
+}
+
+.footer-container a {
+  text-decoration: none;
 }

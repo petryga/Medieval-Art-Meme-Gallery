@@ -1,42 +1,42 @@
-$gunmetal: #292F36;
-$turquoise: #4ECDC4;
-$cream: #F7FFF7; 
-$bittersweet: #FF6B6B;
-$yellow: #FFE66D;
+$green:#C0CAAD;
+$blue:#9DA9A0;
+$rose:#654C4F;
+$copper:#B26E63;
+$khaki: #CEC075;
 
-* {
-    margin: 0;
-    padding: 0;
+*, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  font-family: 'Castoro', serif;
+}
+
+p, a, span {
+  font-size: 3rem;
 }
 
 html {
-		font-size: 62.5%;
+    font-size: 62.5%;
 }
 
-// body {
-//     font-family: 'Josefin Sans', sans-serif;
-// }
-
-// ul {
-//     list-style: none;
-// }
-
-// a {
-//     color: inherit;
-//     text-decoration: none;
-// }
-
 img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  position: relative;
 }
 
 .wrapper {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
 }
 
+.flex {
+  display: flex;
+}

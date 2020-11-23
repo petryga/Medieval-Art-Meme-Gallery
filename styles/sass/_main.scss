@@ -1,83 +1,18 @@
-h1 {
-  font-size: 4rem;
-  text-align: center;
-}
-
-form {
-  font-size: 4rem;
-}
-
-main {
-  background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.wrapper {
-  max-width: 1600px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.main-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.loader {
+// Found this loader online! but need to use this as inspiration, not final result
+.loading{
   height: 100vh;
   width: 100%;
-  background-color: black;
-}
-
-.welcome-div {
-  background-image: url(../assets/aleksandra-cat.jpg);
-  min-height: 90vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.append-to-here{
-  width: 100%;
-}
-
-.image-joke-box{
-  height: 80vh;
-  width: 100%;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  background-repeat: no-repeat;
-  margin-bottom: 6rem;
-  p {
-    font-size: 4rem;
-    color: black;
-    text-align: center;
-    background-color: white;
-    width: 40%;
-    margin: 0 auto;
+  background-color: $blue;
+  justify-content: center;
+  align-items: center;
+  .loader {
+    border: 1.6rem solid $green; /* Light grey */
+    border-top: 1.6rem solid $copper; /* Blue */
+    border-radius: 50%;
+    width: 12rem;
+    height: 12rem;
+    animation: spin 2s linear infinite;
   }
-}
-
-button {
-  font-size: 3rem;
-  padding: 1rem;
-}
-
-// Found this loader online! but need to use this as inspiration, not final result
-
-.loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -85,36 +20,119 @@ button {
   100% { transform: rotate(360deg); }
 }
 
+
+.none {
+  display: none;
+}
+
+.after-loading{
+  opacity: 0%;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  background-color: $rose;
+  .nav-container{
+    padding: 1rem;
+    justify-content: space-between;
+  }
+  h1 {
+    display: inline;
+    font-size: 4rem;
+    color: $khaki;
+  }
+}
+
+main {
+  min-height: 100vh;
+  background-image: url(../assets/deanna-j-3GZlhROZIQg-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+
+form {
+  font-size: 4rem;
+  label{
+    font-size: 2rem;
+  }
+}
+
+.main-image {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.welcome-div {
+  img {
+    width: 40%;
+    margin: 10rem auto;
+  }
+}
+
+.append-to-here{
+  width: 100%;
+  height: 100%;
+  padding-top: 6rem;
+}
+
+.image-joke-box{
+  height: 80vh;
+  width: 70%;
+  flex-direction: column;
+  justify-content: end;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 6rem auto;
+  p {
+    color: $rose;
+    text-align: center;
+    background-color: $green;
+    width: 85%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+  }
+}
+
+
 // Circular menu courtesy of Simon Gooder https://codepen.io/simgooder/pen/bVLjgM
 @mixin circle($param) {
   width: $param;
   height: $param;
-  border-radius: 50px;
+  border-radius: 5rem;
 }
 
-body {
-  position: relative;
-}
-
-.container {
-  position: fixed;
-  bottom: 1em;
-  right: 1em;
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background-color: $green;
 }
 
 .menu-toggle {
   @include circle(7rem);
-  background-color: $yellow;
-  box-shadow: 4px 4px 2px 1px rgba(#000, 0.2);
-  position: absolute;
+  background-color: $khaki;
+  box-shadow: 0.4rem 0.4rem 0.2rem 0.1rem rgba(#000, 0.2);
+  position: fixed;
   z-index: 5;
-  bottom: 0;
-  right: 0;
+  bottom: 2rem;
+  right: 2rem;
   display: table;
   text-align: center;
 
   .fa {
-    color: $gunmetal;
+    color: $rose;
     font-size: 2em;
     display: table-cell;
     vertical-align: middle;
@@ -126,10 +144,32 @@ body {
   }
 }
 
-.none {
-  display: none;
+form {
+  width: 20%;
+  select{
+    width: 100%;
+    font-family: 'Castoro', serif;
+    font-size: 3rem;
+    background-color: $green;
+    padding-right: 1rem;
+    border: none;
+    color: $rose;
+    text-align: right;
+    border-radius: 0.5rem;
+  }
 }
 
-.after-ajax{
-  opacity: 0%;
+footer {
+  background-color: $rose;
+}
+.footer-container {
+  text-align: center;
+  p, a {
+    color: $khaki;
+    font-size: 2rem;
+    // display: inline;
+  }
+  a {
+    text-decoration: none;
+  }
 }

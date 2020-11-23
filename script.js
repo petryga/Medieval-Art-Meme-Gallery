@@ -115,7 +115,7 @@ myApp.dropDownEventListener = function () {
 myApp.appendContent = function (chosenArray, jokesArray) {
   do {
     let imageJokeBox = `
-    <div class = "image-joke-box image-joke-box${myApp.counter}">
+    <div class = "image-joke-box image-joke-box${myApp.counter} flex">
       <p>${jokesArray[myApp.counter]}</p>
     </div>
     `;
@@ -154,8 +154,8 @@ myApp.init = function () {
     myApp.getAnimalImages(),
     myApp.getJokes())
     .done(function () {
-      $('.loader').addClass('none')
-      $('.after-ajax').css('opacity', '100');
+      $('.loading').addClass('none')
+      $('.after-loading').css('opacity', '100');
     });
 }
 
