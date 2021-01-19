@@ -12,20 +12,17 @@
 
   form {
     width: auto;
-    select {
-      width: 100%;
-      font-family: "Castoro", serif;
-      font-size: 3rem;
-      background-color: $green;
-      padding-right: 1rem;
-      border: none;
-      color: $rose;
-      text-align: right;
-      border-radius: 0.5rem;
-    }
+  }
+
+  .append-to-here{
+    margin-top: 100px;
   }
 
   .menu-toggle {
     bottom: 2rem;
+  }
+
+  .image-joke-box p {
+    font-size: 2rem;
   }
 }

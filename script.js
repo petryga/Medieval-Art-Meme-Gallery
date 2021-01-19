@@ -1,4 +1,4 @@
-// namespace
+// namespace 
 const myApp = {}
 // variable to store chosen art array
 let selectedArray;
@@ -14,6 +14,7 @@ myApp.limit = 30; //current limit of jokes on the API
 myApp.counter = 0; // current iteration of loop
 myApp.increment = 5; // number of appends to run when user reaches bottom of screen
 // ajax calls
+// ajax call below is returning a 404: Cors allow origin not matching origin.. but when you click on the get request in the network tab, the status code is 200. 
 myApp.getPortraitImages = function () {
   return $.ajax({
     url: myApp.imageUrl,
@@ -32,7 +33,7 @@ myApp.getPortraitImages = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no images, BYE')
+      alert('Sorry no images!')
     })
 }
 myApp.getWomanImages = function () {
@@ -52,7 +53,7 @@ myApp.getWomanImages = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no images, BYE')
+      alert('Sorry no images!')
     })
 }
 myApp.getAnimalImages = function () {
@@ -71,7 +72,7 @@ myApp.getAnimalImages = function () {
     }
   })
   .fail(function () {
-    alert('Sorry no images, BYE')
+    alert('Sorry no images!')
   })
 }
 myApp.getJokes = function () {
@@ -90,7 +91,7 @@ myApp.getJokes = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no jokes, BYE')
+      alert('Sorry no jokes')
     })
 }
 // event listener finds the value of select. 
@@ -116,14 +117,16 @@ myApp.dropDownEventListener = function () {
 // create a variable that stores the material to be appended that can be looped over
 // append div, change background image to the image url in the image array, and add to the counter. Do while loop
 myApp.appendContent = function (chosenArray, jokesArray) {
+  console.log(chosenArray);
   do {
     let imageJokeBox = `
     <div class = "image-joke-box image-joke-box${myApp.counter} flex">
+      <img src=${chosenArray[myApp.counter]} alt="a lovely image">
       <p>${jokesArray[myApp.counter]}</p>
     </div>
     `;
     $('.append-to-here').append(imageJokeBox);
-    $(`.image-joke-box${myApp.counter}`).css('background-image', `url('${chosenArray[myApp.counter]}')`);
+    // $(`.image-joke-box${myApp.counter}`).css('background-image', `url('${chosenArray[myApp.counter]}')`);
     myApp.counter++;
   }
   while (myApp.counter < myApp.increment);
