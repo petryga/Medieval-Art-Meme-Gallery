@@ -1,0 +1,43 @@
+$green:#C0CAAD;
+$blue:#9DA9A0;
+$rose:#654C4F;
+$copper:#B26E63;
+$khaki: #CEC075;
+$white: #B6B1B5;
+
+*, h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  font-family: 'Castoro', serif;
+}
+
+p, a, span {
+  font-size: 3rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  position: relative;
+}
+
+.wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}

@@ -1,0 +1,28 @@
+@media (max-width: 900px) {
+  nav {
+    .nav-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  form {
+    width: auto;
+  }
+
+  .append-to-here{
+    margin-top: 100px;
+  }
+
+  .menu-toggle {
+    bottom: 2rem;
+  }
+
+  .image-joke-box p {
+    font-size: 2rem;
+  }
+}

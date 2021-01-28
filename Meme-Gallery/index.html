@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medieval Art Meme Gallery</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Castoro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="https://kit.fontawesome.com/d077a2a063.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Loading screen during Ajax call -->
+  <div class="loading flex">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Main body to be shown when Ajax finishes -->
+  <header class="after-loading">
+    <nav>
+      <div class="wrapper nav-container flex">
+        <h1>Medieval Art Meme Gallery</h1>
+        <form action="">
+          <label for="drop-down" class="sr-only">Select your art choice</label>
+          <select name="drop-down" id="drop-down">
+            <option selected disabled>Your Art Choice</option>
+            <option value="portrait">Portrait</option>
+            <option value="woman">Woman</option>
+            <option value="animal">Animals</option>
+          </select>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="after-loading">
+    <div class="wrapper main-image flex">
+      <!-- Append to here -->
+      <div class="append-to-here">
+        <!-- Placeholder Cat -->
+        <div class="welcome-div">
+          <img src="./assets/aleksandra-cat1.png"
+            alt="A lovely cat and banana to greet museum goers">
+        </div>
+      </div>
+    </div>
+
+    <!-- Go to top button -->
+    <div class="button">
+      <div class="menu-toggle" id="btn" tabindex="1">
+        <span class="fa fa-arrow-up"></span>
+      </div>
+    </div>
+
+  </main>
+  <footer>
+    <div class="footer-container wrapper">
+      <p>Made at <a href="https://junocollege.com/">Juno College</a> by Aleksandra Petryga and Boris Ulanowicz</p>
+      <p class="sr-only">Photo by <a href="https://unsplash.com/@deanna_j?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Deanna J</a> on <a href="https://unsplash.com/s/photos/museum?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a><p>
+    </div>
+  </footer>
+
+  <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
