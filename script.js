@@ -33,9 +33,10 @@ myApp.getPortraitImages = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no images!')
+      alert('Sorry no images - API Error')
     })
 }
+
 myApp.getWomanImages = function () {
   return $.ajax({
     url: myApp.imageUrl,
@@ -53,9 +54,10 @@ myApp.getWomanImages = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no images!')
+      alert('Sorry no images  - API Error')
     })
 }
+
 myApp.getAnimalImages = function () {
   return $.ajax({
     url: myApp.imageUrl,
@@ -72,9 +74,10 @@ myApp.getAnimalImages = function () {
     }
   })
   .fail(function () {
-    alert('Sorry no images!')
+    alert('Sorry no images - API Error')
   })
 }
+
 myApp.getJokes = function () {
   return $.ajax({
     url: myApp.jokesUrl,
@@ -91,7 +94,7 @@ myApp.getJokes = function () {
       }
     })
     .fail(function () {
-      alert('Sorry no jokes')
+      alert('Sorry no jokes - API Error')
     })
 }
 // event listener finds the value of select. 
@@ -100,9 +103,11 @@ myApp.getJokes = function () {
 // this function also clears the div where content is appended
 myApp.dropDownEventListener = function () {
   $('#drop-down').on('change', function () {
+    $('.append-to-here').empty();
+    $('html, body').animate({scrollTop: '0px'}, 0);
+    selectedArray = [];
     myApp.counter = 0;
     myApp.increment = 5;
-    $('.append-to-here').empty();
     if ($(this).val() == 'portrait') {
       selectedArray = myApp.imagesPortraitsArray;
     } else if ($(this).val() == 'woman') {
@@ -117,16 +122,14 @@ myApp.dropDownEventListener = function () {
 // create a variable that stores the material to be appended that can be looped over
 // append div, change background image to the image url in the image array, and add to the counter. Do while loop
 myApp.appendContent = function (chosenArray, jokesArray) {
-  console.log(chosenArray);
   do {
     let imageJokeBox = `
     <div class = "image-joke-box image-joke-box${myApp.counter} flex">
-      <img src=${chosenArray[myApp.counter]} alt="a lovely image">
+      <img src=${chosenArray[myApp.counter]} alt="art piece">
       <p>${jokesArray[myApp.counter]}</p>
     </div>
     `;
     $('.append-to-here').append(imageJokeBox);
-    // $(`.image-joke-box${myApp.counter}`).css('background-image', `url('${chosenArray[myApp.counter]}')`);
     myApp.counter++;
   }
   while (myApp.counter < myApp.increment);
@@ -150,6 +153,7 @@ myApp.scrollButton = function () {
     $('html, body').animate({ scrollTop: '0px' }, 300);
   })
 }
+
 // init
 myApp.init = function () {
   myApp.dropDownEventListener();
